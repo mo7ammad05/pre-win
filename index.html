@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Jordan Tour | The Winning Pitch Deck (.win)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#F5B83D;--clay:#C86D51;--sand:#E5C598;--ink:#05080F;--mint:#34D399;--rose:#FB7185;--sky:#38BDF8;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tajawal,sans-serif;background:var(--ink);color:#f1f5f9;height:100vh;width:100vw;overflow:hidden;user-select:none}
+.hidden{display:none!important}
+#bg{position:fixed;inset:0;z-index:0}
+.orb{position:fixed;border-radius:50%;filter:blur(110px);opacity:.28;z-index:0;animation:drift 20s ease-in-out infinite alternate}
+.o1{width:48vw;height:48vw;background:#B45309;top:-18vw;right:-12vw}
+.o2{width:42vw;height:42vw;background:#7C2D12;bottom:-16vw;left:-10vw;animation-delay:-8s}
+.o3{width:30vw;height:30vw;background:#0E7490;top:35%;left:35%;opacity:.14;animation-delay:-14s}
+@keyframes drift{to{transform:translate(6vw,4vh) scale(1.18)}}
+body:after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0 1px,transparent 1px 3px)}
+#progress{position:fixed;top:0;right:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--gold),var(--clay));box-shadow:0 0 14px var(--gold);transition:width .7s var(--ease)}
+#app{position:relative;z-index:5;height:100%;display:flex;flex-direction:column;padding:16px 28px}
+header,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1280px;width:100%;margin:0 auto}
+header{padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.08)}
+footer{padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo b{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--gold),var(--clay));box-shadow:0 0 28px rgba(245,184,61,.45);animation:pulse 3s infinite}
+@keyframes pulse{50%{box-shadow:0 0 44px rgba(245,184,61,.8)}}
+.logo span{display:block;font-weight:900;font-size:1.05rem}
+.logo small{display:block;font:700 .62rem monospace;color:var(--gold);letter-spacing:.12em}
+.pill,.btn{font:700 .75rem Tajawal;color:#cbd5e1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:8px 14px;border-radius:14px;cursor:pointer;backdrop-filter:blur(10px);transition:.3s var(--ease)}
+.btn:hover{background:rgba(245,184,61,.18);border-color:var(--gold);color:#fff;transform:translateY(-2px)}
+.pill{cursor:default;font-family:monospace}
+#timer{font:900 1.1rem monospace;letter-spacing:.12em}
+.tools{display:flex;gap:8px;align-items:center}
+main{flex:1;position:relative;max-width:1280px;width:100%;margin:0 auto;perspective:1400px}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:1.3rem;padding:.5rem 1rem;visibility:hidden;opacity:0;transform:translateX(var(--dx,-90px)) rotateY(var(--ry,8deg)) scale(.94);filter:blur(14px);transition:all .8s var(--ease),visibility 0s .8s}
+.slide.active{visibility:visible;opacity:1;transform:none;filter:none;transition:all .8s var(--ease),visibility 0s}
+.slide>*{opacity:0;transform:translateY(34px);transition:all .8s var(--ease)}
+.slide.active>*{opacity:1;transform:none;transition-delay:calc(.12s + var(--i)*.11s)}
+.center{align-items:center;text-align:center}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:12px}
+.k{font:700 .72rem monospace;color:var(--clay);letter-spacing:.1em;display:block;margin-bottom:4px}
+h2{font-weight:900;font-size:clamp(1.5rem,3.3vw,2.7rem);line-height:1.3;text-wrap:balance}
+.big{font-weight:900;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1.15}
+.gt{background:linear-gradient(100deg,#FEF3C7,var(--gold) 40%,var(--clay) 80%,#FEF3C7);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+@keyframes sheen{to{background-position:-220% 0}}
+.tag{font:700 .72rem monospace;color:var(--gold);background:rgba(245,184,61,.1);border:1px solid rgba(245,184,61,.35);padding:5px 13px;border-radius:99px;white-space:nowrap}
+.tag.g{color:var(--mint);background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.35)}
+.tag.p{color:#C4B5FD;background:rgba(167,139,250,.12);border-color:rgba(167,139,250,.4)}
+.sub{font-size:clamp(1rem,1.9vw,1.5rem);color:#cbd5e1;max-width:52rem;line-height:1.8}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.card{position:relative;overflow:hidden;padding:20px;border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(14px);transition:transform .4s var(--ease),border-color .4s;line-height:1.8}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(245,184,61,.2),transparent 60%);opacity:0;transition:opacity .4s}
+.card:hover{transform:translateY(-6px);border-color:rgba(245,184,61,.5)}.card:hover:before{opacity:1}
+.card h4{font-weight:800;font-size:1rem;margin-bottom:6px}
+.card p{font-size:.85rem;color:#94a3b8}
+.card.win{border:1.5px solid var(--sand);box-shadow:0 0 70px -12px rgba(245,184,61,.5)}
+.card.dim{opacity:.55}
+.card.rose{border-color:rgba(251,113,133,.5)}.card.amb{border-color:rgba(245,184,61,.5)}.card.blu{border-color:rgba(56,189,248,.5)}
+.card.em{border:1.5px solid var(--mint);box-shadow:0 0 60px -14px rgba(52,211,153,.5)}
+.num{font:900 clamp(1.8rem,3.6vw,3rem) monospace}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.ring{position:absolute;width:min(70vh,640px);aspect-ratio:1;border-radius:50%;z-index:-1;background:conic-gradient(from 0deg,transparent,rgba(245,184,61,.28),transparent 40%,rgba(200,109,81,.22),transparent);animation:spin 14s linear infinite;filter:blur(30px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chart{position:relative;height:270px;display:flex}
+.chart svg{position:absolute;inset:0;width:100%;height:100%}
+.lbl{position:absolute;font:700 .62rem monospace;padding:3px 8px;border-radius:99px;white-space:nowrap;transform:translateX(-50%)}
+.yax{width:48px;display:flex;flex-direction:column;justify-content:space-between;font:.68rem monospace;color:#64748b;text-align:end;padding-inline-start:8px;border-inline-start:1px solid rgba(255,255,255,.12)}
+.stamps{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.stamp{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:.72rem;font-weight:800;border:2px dashed #334155;color:#475569;background:#0b1220;transition:.4s var(--ease)}
+.stamp.on{border:2px solid var(--gold);color:#FDE68A;background:radial-gradient(circle,rgba(245,184,61,.3),rgba(120,53,15,.4));box-shadow:0 0 30px rgba(245,184,61,.55),inset 0 0 18px rgba(245,184,61,.3);animation:pulse 3s infinite}
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:14px;height:170px}
+.podium div{width:130px;border-radius:18px 18px 0 0;padding:10px;font-weight:800;font-size:.8rem;background:#1e293b;transform-origin:bottom;transform:scaleY(0);transition:transform 1.1s var(--ease) .6s}
+.active .podium div{transform:none}
+.podium .p1{height:170px;background:linear-gradient(to top,#B45309,var(--gold));color:#1c1100;box-shadow:0 0 50px rgba(245,184,61,.5)}
+.podium .p2{height:120px}.podium .p3{height:90px}
+.badge{position:relative;width:150px;height:150px;margin:0 auto 14px}
+.badge img{width:100%;height:100%;border-radius:28px;object-fit:cover;border:3px solid #1e293b}
+.badge svg{position:absolute;bottom:-14px;inset-inline-start:-14px;width:72px;height:72px;filter:drop-shadow(0 8px 16px #000);animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px) rotate(4deg)}}
+.dots{display:flex;gap:7px;align-items:center}
+.dots i{height:8px;width:8px;border-radius:9px;background:#334155;cursor:pointer;transition:.5s var(--ease)}
+.dots i.on{width:30px;background:linear-gradient(90deg,var(--gold),var(--clay));box-shadow:0 0 12px var(--gold)}
+.go{background:linear-gradient(90deg,var(--clay),#D97706);color:#fff;border:0;font-weight:900;padding:10px 24px}
+#drawer{position:fixed;inset-block:0;inset-inline-end:0;width:min(480px,100%);z-index:70;background:rgba(3,7,18,.94);backdrop-filter:blur(24px);border-inline-start:1px solid rgba(255,255,255,.1);padding:24px;transform:translateX(100%);transition:transform .5s var(--ease);display:flex;flex-direction:column;gap:14px}
+[dir=rtl] #drawer{transform:translateX(-100%)}
+#drawer.open{transform:none!important}
+#dscript{font-size:.95rem;line-height:2;background:rgba(255,255,255,.05);padding:16px;border-radius:18px;max-height:62vh;overflow:auto}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);display:grid;place-items:center;padding:16px}
+.modal .card{max-width:360px;text-align:center}
+#remote{position:fixed;inset:0;z-index:90;background:#030712;padding:20px;display:flex;flex-direction:column;justify-content:space-between}
+#remote .btn{width:100%;padding:22px;font-size:1.4rem}
+@media(max-width:900px){.g3,.g4,.g5{grid-template-columns:repeat(2,1fr)}.stamps{grid-template-columns:repeat(4,1fr)}.hd{flex-direction:column;align-items:flex-start}.tools .pill:not(#timerbox),.tools .btn span{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div id="progress"></div>
+
+<!-- ريموت الجوال -->
+<div id="remote" class="hidden">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff1a;padding-bottom:12px">
+    <span style="font-size:.8rem;font-weight:700;color:#cbd5e1">🟢 متصل بالمسرح مباشرة</span>
+    <span id="m-idx" class="tag">01 / 14</span>
+  </div>
+  <div class="card win" style="margin:auto 0">
+    <div id="m-title" class="k" style="color:var(--gold)"></div>
+    <p id="m-script" style="color:#e2e8f0;font-size:.95rem;max-height:46vh;overflow:auto"></p>
+  </div>
+  <div style="display:grid;gap:12px">
+    <button class="btn go" onclick="remoteSend('next')">الشريحة التالية ←</button>
+    <div style="display:flex;gap:8px"><button class="btn" style="flex:1;padding:16px;font-size:.9rem" onclick="remoteSend('prev')">→ السابقة</button><button class="btn" style="width:auto;padding:16px" onclick="location.reload()">🔄</button></div>
+  </div>
+</div>
+
+<div id="app">
+<header>
+  <div class="logo"><b>.win</b><div><span>Jordan Tour</span><small>SOVEREIGN TOURISMTECH PLATFORM</small></div></div>
+  <div class="pill" id="timerbox">⏱ <span id="timer">05:00</span> <button id="tbtn" style="background:none;border:0;color:#94a3b8;cursor:pointer;margin-inline-start:6px">▶</button></div>
+  <div class="tools">
+    <button class="btn" onclick="openPair()">📱 <span>ربط الهاتف</span></button>
+    <button class="btn" id="bnotes">🎙 <span>النوتات (S)</span></button>
+    <span class="pill" id="idx">01 / 14</span>
+    <button class="btn" onclick="toggleFS()" title="F">⛶</button>
+  </div>
+</header>
+
+<main id="stage">
+
+<!-- 1 -->
+<section class="slide center active" data-title="1. الافتتاح والسيادة" data-spoken="سعادة رئيس وأعضاء لجنة التحكيم الموقرة، أسعد الله مساءكم. اليوم، لن نحدثكم عن موقع سياحي يعرض صوراً للأردن.. نحن كفريق مهندسين برمجيات (.win) جئنا لنضع بين أيديكم Jordan Tour: أول منظومة تشغيلية وطنية ذات سيادة رقمية ومالية، لا تكتفي بعرض الأردن، بل تعيد هندسة سلوك السائح من زائر عابر، إلى مستكشف دائم وسفير استقطاب للمملكة.">
+  <div class="ring"></div>
+  <span class="tag">👑 النهائي الوطني لتكنولوجيا السياحة والحلول الحكومية الذكية</span>
+  <h1 class="big">منظومة <span class="gt">Jordan Tour</span></h1>
+  <p class="sub">إعادة هيكلة الاقتصاد السياحي عبر التلعيب التراثي، السيادة المالية لكليك، ومجتمع الاستكشاف الذاتي.</p>
+  <div class="chips"><span class="pill">فريق المهندسين: <b style="color:#fff">.win Team</b></span><span class="tag" style="color:var(--sand)">12 محافظة • CliQ Sandbox • جواز سفر رقمي • Vanilla JS</span></div>
+</section>
+
+<!-- 2 -->
+<section class="slide" data-title="2. شارت الوعاء المثقوب" data-spoken="انظروا معي إلى هذا الرسم البياني المأخوذ من البيانات الرسمية؛ المحور الرأسي يوضح أعداد الزوار بالملايين، والأفقي يمتد زمنياً من 2000 حتى 2025. نرى تدفقاً قياسياً تجاوز 6.35 مليون زائر في 2023! المشكلة لم تكن في جلب السائح، بل في أن هذا التدفق يصب في وعاء مثقوب: عمولات 25% للمنصات العالمية، و82% محصورة في عمان والبتراء فقط!">
+  <div class="hd"><div><span class="k">OFFICIAL DATA 2000 - 2025</span><h2>مفارقة النمو: تدفق قياسي.. ونزيف حاد في العوائد والتوزيع!</h2></div><span class="tag g">بيانات رسمية 📈</span></div>
+  <div class="grid" style="grid-template-columns:2fr 1fr;align-items:center">
+    <div class="card">
+      <div class="chart" dir="ltr">
+        <div style="flex:1;position:relative;margin-right:8px">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;opacity:.12"><i style="border-bottom:1px solid #fff"></i><i style="border-bottom:1px solid #fff"></i><i style="border-bottom:1px solid #fff"></i><i style="border-bottom:1px solid #fff"></i><i style="border-bottom:1px solid #fff"></i><i style="border-bottom:1px solid #fff"></i><i style="border-bottom:1px solid #fff"></i><i style="border-bottom:1px solid #fff"></i></div>
+          <svg viewBox="0 0 620 220" preserveAspectRatio="none">
+            <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity=".45"/><stop offset="1" stop-color="#D97706" stop-opacity="0"/></linearGradient></defs>
+            <path id="carea" style="opacity:0;transition:opacity 2s .5s" d="M 35,171 C 70,150 90,130 115,129 C 145,128 170,90 195,86 C 225,82 245,106 275,108 C 305,110 330,66 355,64 C 375,62 390,175 410,181 C 440,187 470,42 495,38 C 515,35 535,66 555,68 C 575,70 595,43 610,42 L 610,210 L 35,210 Z" fill="url(#cg)"/>
+            <path id="cline" style="stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 2.8s cubic-bezier(.2,.8,.2,1)" d="M 35,171 C 70,150 90,130 115,129 C 145,128 170,90 195,86 C 225,82 245,106 275,108 C 305,110 330,66 355,64 C 375,62 390,175 410,181 C 440,187 470,42 495,38 C 515,35 535,66 555,68 C 575,70 595,43 610,42" fill="none" stroke="#F5B83D" stroke-width="3.5" stroke-linecap="round" filter="drop-shadow(0 0 6px #F59E0B)"/>
+            <circle cx="410" cy="181" r="5" fill="#EF4444"/><circle cx="495" cy="38" r="7" fill="#FDE68A" stroke="#B45309" stroke-width="2.5"><animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/></circle><circle cx="610" cy="42" r="5" fill="#10B981"/>
+          </svg>
+          <span class="lbl" style="top:186px;left:63%;background:#4c0519;color:#fb7185;border:1px solid #9f1239">جائحة كورونا (1.05M)</span>
+          <span class="lbl" style="top:2px;left:76%;background:var(--gold);color:#1c1100">الذروة التاريخية 👑 <span data-count="6.35" data-dec="2">0</span>M</span>
+        </div>
+        <div class="yax"><b style="color:#cbd5e1">7.0M</b><span>6.0M</span><span>5.0M</span><span>4.0M</span><span>3.0M</span><span>2.0M</span><span>1.0M</span><span>0.0M</span></div>
+      </div>
+      <div dir="ltr" style="display:flex;justify-content:space-between;font:700 .68rem monospace;color:#64748b;border-top:1px solid #ffffff14;padding:8px 56px 0 16px"><span>2000</span><span>2005</span><span>2010</span><span>2015</span><span>2019</span><span style="color:var(--rose)">2020</span><span style="color:var(--gold)">2023</span><span>2024</span><span style="color:var(--mint)">2025</span></div>
+    </div>
+    <div class="grid">
+      <div class="card rose"><h4 style="color:var(--rose)">1. نزيف العمولات (<span data-count="25">0</span>%)</h4><p>منصات Booking تقتطع 25% من كل حجز خارج الأردن.</p></div>
+      <div class="card amb"><h4 style="color:var(--gold)">2. اختناق التوزيع (<span data-count="82">0</span>%)</h4><p>82% من الليالي محصورة في عمان والبتراء بينما تُحرم 9 محافظات.</p></div>
+      <div class="card blu"><h4 style="color:var(--sky)">3. الزيارة الأحادية</h4><p>السائح يغادر سريعاً لغياب حافز يربطه ببقية المحافظات.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide" data-title="3. المنظومة مقابل الموقع" data-spoken="المواقع بروشورات ميتة لا تحل أزمات القطاعات.. بنينا نظاماً يوجه حركة السائح ويتحكم بمسار النقد داخل الاقتصاد الوطني...">
+  <div style="text-align:center"><span class="k">THE ENGINEERING THESIS</span><h2>المواقع بروشورات ميتة.. المنظومات التشغيلية هي الحل الجذري!</h2></div>
+  <div class="grid g2" style="align-items:stretch">
+    <div class="card dim"><h4 style="font-size:1.3rem;color:#94a3b8">الموقع السياحي التقليدي ✕</h4><p style="font-size:1rem">عرض صور ووصف جامد بدون دافع تفاعلي، وتحويل السائح لروابط واتساب مجهولة أو منصات أجنبية بعمولة 25%.</p></div>
+    <div class="card win"><h4 style="font-size:1.5rem">نظام Jordan Tour المتكامل ✓</h4><p style="font-size:1rem;color:#e2e8f0">دفع محلي عبر كليك بعمولة 5%، وجواز سفر رقمي بـ 12 ختماً، وفصل الدفع المالي عن التحقق الميداني الفعلي.</p></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide" data-title="4. جواز السفر والأختام" data-spoken="12 ختماً للمحافظات بنمط شارات جواكر. وفصلنا الدفع عن الزيارة: الختم لا يُفك إلا بالحضور الفعلي ومسح QR من المشرف الميداني...">
+  <div class="hd"><h2>جواز السفر الرقمي: أختام المحافظات الـ 12</h2><span class="tag">12 Circular Seals</span></div>
+  <div class="stamps">
+    <div class="stamp on">🏛️<br>معان</div><div class="stamp on">👑<br>عمان</div><div class="stamp">🔒<br>العقبة</div><div class="stamp">🔒<br>البلقاء</div><div class="stamp">🔒<br>إربد</div><div class="stamp">🔒<br>الكرك</div>
+    <div class="stamp">🔒<br>جرش</div><div class="stamp">🔒<br>مادبا</div><div class="stamp">🔒<br>الزرقاء</div><div class="stamp">🔒<br>المفرق</div><div class="stamp">🔒<br>الطفيلة</div><div class="stamp">🔒<br>عجلون</div>
+  </div>
+  <p class="sub" style="font-size:1rem">الختم المقفل رمادي، وعند زيارة المحافظة ومسح رمز QR الميداني يتحول لختم مذهب مشع!</p>
+</section>
+
+<!-- 5 -->
+<section class="slide" data-title="5. شارة التوثيق الملكية" data-spoken="النجمة السباعية بعلم الأردن تُمنح لمن يكمل الـ 12 محافظة.. فجّرنا بها السياحة الداخلية للعائلات والشباب...">
+  <div class="hd"><h2>شارة التوثيق الملكية: النجمة السباعية بعلم الأردن</h2><span class="tag">12/12 Seals</span></div>
+  <div class="grid" style="grid-template-columns:5fr 7fr;align-items:center">
+    <div class="card win center" style="text-align:center">
+      <div class="badge"><img src="img.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300'">
+        <svg viewBox="0 0 100 100"><defs><linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FEF08A"/><stop offset=".4" stop-color="#F59E0B"/><stop offset="1" stop-color="#78350F"/></linearGradient><clipPath id="sc"><polygon points="50,2 59.5,30.2 87.5,20.1 71.5,45.1 96.8,60.7 67.2,63.7 70.8,93.3 50,72 29.2,93.3 32.8,63.7 3.2,60.7 28.5,45.1 12.5,20.1 40.5,30.2"/></clipPath></defs>
+        <g clip-path="url(#sc)"><rect width="100" height="34" fill="#000"/><rect y="34" width="100" height="33" fill="#fff"/><rect y="67" width="100" height="33" fill="#007A3D"/><polygon points="0,5 48,50 0,95" fill="#CE1126"/><polygon points="22,44.2 23,47.2 26.2,46.2 24.3,48.8 27.2,50.2 24,50.5 24.3,53.6 22,51.3 19.7,53.6 20,50.5 16.8,50.2 19.7,48.8 17.8,46.2 21,47.2" fill="#fff"/></g>
+        <polygon points="50,2 59.5,30.2 87.5,20.1 71.5,45.1 96.8,60.7 67.2,63.7 70.8,93.3 50,72 29.2,93.3 32.8,63.7 3.2,60.7 28.5,45.1 12.5,20.1 40.5,30.2" fill="none" stroke="url(#gb)" stroke-width="2" stroke-linejoin="round"/></svg></div>
+      <h3 style="font-weight:900;font-size:1.4rem">محمد الشوابكة</h3>
+      <span style="color:var(--gold);font-weight:700;font-size:.8rem;display:block;margin:4px 0">مستكشف ملكي معتمد (Royal Verified)</span>
+      <p style="font-size:.8rem;color:#cbd5e1">استكمل زيارة كافة محافظات المملكة الـ 12 بنجاح 🇯🇴</p>
+    </div>
+    <div class="card"><h4 style="color:var(--mint);font-size:1.1rem">محرك السياحة العائلية والداخلية</h4><p style="font-size:.95rem">فتح باب التنافس الشريف بين العائلات والشباب لاستكشاف المفرق والطفيلة وعجلون لنيل شارة التوثيق الوطنية.</p></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide" data-title="6. سيكولوجية السوشيال ميديا" data-spoken="السائح يبحث عن التقدير، ينشر تجاربه ويدعو أصدقاءه بكود الإحالة (خصم 5 د.أ)، ليتحول لأقوى قناة تسويق مجانية بدون ميزانيات إعلانية...">
+  <div class="hd"><h2>السائح هو المسوّق: سيكولوجية التقدير وحلقة النمو الفيروسي</h2><span class="tag g">Zero CAC</span></div>
+  <div class="grid g3 center" style="text-align:center">
+    <div class="card"><div style="font-size:2.6rem">📸</div><h4>1. التباهي بالأختام</h4><p>ينشر تجربته في المنتدى ويشارك الرابط مع أصدقائه في بلده.</p></div>
+    <div class="card win"><div style="font-size:2.6rem">🎁</div><h4 style="color:var(--gold)">2. كود الإحالة (خصم 5 د.أ)</h4><p style="color:#e2e8f0">الصديق يكسب خصماً ونقاطاً، وصاحب الرمز يكسب +<span data-count="150">0</span> نقطة بمحفظته.</p></div>
+    <div class="card"><div style="font-size:2.6rem">✈️</div><h4>3. قدوم سياح جدد</h4><p>يتحول أصدقاء السائح إلى زوار فعليين للأردن بتكلفة اكتساب صفرية.</p></div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="slide" data-title="7. لوحة المتصدرين والجوائز" data-spoken="تنافس حقيقي برحلات وإقامات مجانية للمراكز الأولى، وليس مجرد نقاط على شاشة...">
+  <div class="hd"><h2>لوحة المتصدرين: منصة التتويج بجوائز ورحلات وإقامات مجانية</h2><span class="tag">Real Rewards</span></div>
+  <div class="card center" style="text-align:center"><div class="podium"><div class="p2">🥈 إقامة مجانية</div><div class="p1">👑 #1 رحلة VIP</div><div class="p3">🥉 خصم 50%</div></div><p style="margin-top:12px">استبدال النقاط بحجوزات فعلية يمنح التنافس قيمة مادية ملموسة.</p></div>
+</section>
+
+<!-- 8 -->
+<section class="slide" data-title="8. المرشد السياحي الذكي" data-spoken="مرشد بذكاء Gemini وموسوعة محلية، يجيب بلهجة أردنية مضيافة دون أي هلوسة في الأسعار...">
+  <div class="hd"><h2>المرشد السياحي الذكي: كرم الضيافة بذكاء اصطناعي سيادي</h2><span class="tag p">Gemini AI</span></div>
+  <div class="card" style="border-color:rgba(167,139,250,.5)"><div style="display:flex;gap:16px;align-items:center"><span style="font-size:3rem">🤖</span><p style="font-size:1.15rem;color:#FDE68A;font-weight:700">"يا هلا والله بضيف الأردن العزيز! 🌸 نورتنا.. بقدر أساعدك في حجز رحلتك والدفع المباشر بكليك."</p></div><p style="margin-top:10px">معرفة موسوعية بتاريخ الأردن والمنسف والمحافظات الـ 12 مع دقة تامة في الأسعار المعتمدة.</p></div>
+</section>
+
+<!-- 9 -->
+<section class="slide" data-title="9. السيادة المالية مع CliQ" data-spoken="دفع فوري عبر كليك بالاسم المستعار JORDANEXPLORER بعمولة 5% فقط، وتذاكر صعود مشفرة بـ HMAC-SHA256...">
+  <div class="hd"><h2>البنية المالية الوطنية: دعم فوري لـ CliQ وتذاكر مشفرة</h2><span class="tag">CliQ: JORDANEXPLORER</span></div>
+  <div class="grid g2">
+    <div class="card"><h4 style="color:var(--gold);font-size:1.2rem">عمولة 5-7% فقط لصالح الوطن</h4><p>توفير <b style="color:#fff" data-count="70">0</b>% من العمولات التي تبتلعها المنصات الدولية لصالح المشغلين المحليين.</p></div>
+    <div class="card"><h4 style="color:var(--mint);font-size:1.2rem">تذكرة صعود مشفرة (HMAC-SHA256)</h4><p>توليد تذكرة PDF بـ QR Code مشفر يمنع التزوير أو التكرار عند البوابات.</p></div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide" data-title="10. غرفة العمليات (الأدمن)" data-spoken="10 أنظمة كاملة: محرر رحلات حاسب للخصم، تدقيق كليك، تحديث الشعار اللحظي، ومحرر الخريطة...">
+  <div class="hd"><h2>غرفة العمليات المركزية: تحكم تشغيلي وسحابي في <span data-count="10">0</span> أنظمة</h2><span class="tag p">Master Admin</span></div>
+  <div class="grid g5" style="font-size:.82rem;font-weight:700">
+    <div class="card" style="padding:14px">1. إدارة الرحلات والأسعار</div><div class="card" style="padding:14px">2. تدقيق حجوزات كليك</div><div class="card" style="padding:14px">3. الشعار والهوية اللحظية</div><div class="card" style="padding:14px">4. مكتبة المعالم البارزة</div><div class="card" style="padding:14px">5. محرر الخريطة بالنقر</div>
+    <div class="card" style="padding:14px">6. أختام المحافظات الـ 12</div><div class="card" style="padding:14px">7. قواعد وسقف النقاط</div><div class="card" style="padding:14px">8. سحابة Cloudinary</div><div class="card" style="padding:14px">9. إعدادات Gemini AI</div><div class="card" style="padding:14px">10. تطهير البيانات الوهمية</div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide" data-title="11. سرعة الصحراء (Vanilla JS)" data-spoken="حجم المنظومة أقل من 120KB وسرعة تحميل أقل من 1.8 ثانية على شبكات الصحراء، وثبات بصري CLS=0...">
+  <div class="hd"><h2>الهندسة البرمجية الخالصة: سرعة استثنائية في الصحراء</h2><span class="tag g">Vanilla JS</span></div>
+  <div class="grid g3" style="text-align:center">
+    <div class="card"><div class="num" style="color:var(--mint)">&lt; <span data-count="120">0</span> KB</div><p>حجم خفيف جداً يضمن LCP &lt; 1.8s على شبكات 3G.</p></div>
+    <div class="card"><div class="num" style="color:var(--gold)">CLS = <span data-count="0">0</span></div><p>ثبات بصري مطلق دون أي اهتزاز للواجهات عند التحميل.</p></div>
+    <div class="card"><div class="num" style="color:var(--sky)">Web Audio</div><p>نغمات الخريطة والأختام مولدة كودياً لتوفير باقة السائح.</p></div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide" data-title="12. مصفوفة الأمان والجودة" data-spoken="معمارية Zero-Trust تمنع التلاعب بالنقاط من المتصفح، ومنع الحجز المزدوج 100% وفق معايير IEEE 830...">
+  <div class="hd"><h2>مصفوفة الأمان والجودة: معمارية انعدام الثقة (Zero-Trust)</h2><span class="tag">IEEE 830</span></div>
+  <div class="grid g4" style="font-weight:800;font-size:.95rem">
+    <div class="card">🛡️ منع الحجز المزدوج <span data-count="100">0</span>%</div><div class="card">🔐 حماية النقاط من التلاعب</div><div class="card">✉️ تأكيد الإيميل الحقيقي</div><div class="card">🎫 تشفير تذاكر QR بـ HMAC</div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section class="slide" data-title="13. أنظمة المنصة السبعة" data-spoken="7 أنظمة متكاملة: الرئيسية، الرحلات، المنتدى، المتصدرين، البروفايل، الأدمن، والمرشد الذكي...">
+  <div class="hd"><h2>خارطة المنظومة: <span data-count="7">0</span> أنظمة فرعية متكاملة</h2><span class="tag g">Full Suite</span></div>
+  <div class="grid g4" style="font-weight:800">
+    <div class="card" style="color:var(--gold)">1. الرئيسية</div><div class="card" style="color:var(--mint)">2. استكشاف الرحلات</div><div class="card" style="color:var(--sky)">3. منتدى السياح</div><div class="card" style="color:#F59E0B">4. المتصدرين</div>
+    <div class="card" style="color:#C4B5FD">5. الملف الشخصي</div><div class="card" style="color:var(--rose)">6. لوحة الأدمن</div><div class="card" style="color:#A5B4FC;grid-column:span 2">7. المرشد الذكي (AI)</div>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="slide center" data-title="14. الجدوى وخاتمة الفوز" data-spoken="نقطة التعادل 84 حجزاً شهرياً فقط لكامل الأردن! لم نبنِ موقعاً لعرض الصور، بل منظومة تجعل زيارة الأردن شغفاً وتحدياً!">
+  <div class="ring"></div>
+  <span class="tag g">The Financial Equation & Victory</span>
+  <h2 class="big" style="font-size:clamp(2rem,5vw,4rem)">نقطة التعادل المالي: <span class="gt"><span data-count="84">0</span> حجزاً شهرياً</span> فقط لكامل الأردن!</h2>
+  <div class="card em"><div class="num" style="font-size:clamp(1.2rem,2.4vw,1.9rem);color:#6EE7B7">3,000 د.أ تكلفة ➗ 3 د.أ عمولة = 1,000 حجز/سنة</div><p style="color:var(--gold);font-weight:700">(أقل من 0.2% من سياح البتراء وحدهم!)</p></div>
+  <p class="sub" style="font-size:1.1rem;font-weight:700;color:#f1f5f9">"لم نبنِ موقعاً لعرض الصور.. بل منظومة تجعل زيارة الأردن شغفاً يُعاش ويُختم!"</p>
+  <span style="font:900 .85rem monospace;color:var(--sand)">فريق المهندسين البرمجيين (.win Team) 🇯🇴</span>
+</section>
+
+</main>
+
+<footer>
+  <button class="btn" id="prev">→ السابق</button>
+  <div class="dots" id="dots"></div>
+  <button class="btn go" id="next">التالي ←</button>
+</footer>
+</div>
+
+<aside id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ffffff1a;padding-bottom:10px"><h3 id="dtitle" style="font-size:.95rem;font-weight:900">سيناريو الإلقاء</h3><button class="btn" id="dclose">✕</button></div>
+  <div id="dscript"></div>
+  <div class="tag" style="text-align:center;white-space:normal">💡 تحدث بنبرة هادئة وممتلئة بالثقة والاعتزاز كمهندس برمجيات ريادي!</div>
+</aside>
+
+<div id="qr" class="modal hidden"><div class="card win"><h3 style="font-weight:900;margin-bottom:6px">📱 امسح بكاميرا الهاتف للتحكم</h3><p style="margin-bottom:12px">افتح كاميرا جوالك وامسح الرمز ليفتح الريموت فوراً</p><div style="background:#fff;border-radius:18px;padding:8px;width:200px;height:200px;margin:0 auto 14px"><img id="qrimg" style="width:100%;height:100%" alt=""></div><button class="btn" onclick="qr.classList.add('hidden')">إغلاق</button></div></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')],$=id=>document.getElementById(id);
+let cur=0;const remote=location.search.includes('remote');
+slides.forEach(s=>[...s.children].forEach((c,i)=>c.style.setProperty('--i',i)));
+
+/* خلفية جسيمات ذهبية + خطوط ربط */
+const cv=$('bg'),cx=cv.getContext('2d');let W,H,P=[];
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(90,W/16|0)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.6+.4}))}
+rs();addEventListener('resize',rs);
+(function draw(){cx.clearRect(0,0,W,H);
+P.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+cx.fillStyle='rgba(245,184,61,.7)';cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.3);cx.fill();
+for(let j=i+1;j<P.length;j++){const q=P[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<120){cx.strokeStyle=`rgba(245,184,61,${.14*(1-d/120)})`;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}});
+requestAnimationFrame(draw)})();
+
+/* إضاءة تتبع الماوس على البطاقات */
+document.addEventListener('mousemove',e=>{const c=e.target.closest&&e.target.closest('.card');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')});
+
+/* عدّادات الأرقام */
+function counters(s){s.querySelectorAll('[data-count]').forEach(el=>{const t=+el.dataset.count,d=+(el.dataset.dec||0),st=performance.now();(function f(n){const k=Math.min((n-st)/1600,1),e=1-Math.pow(1-k,4);el.textContent=(t*e).toFixed(d);if(k<1)requestAnimationFrame(f)})(st)})}
+
+function chart(){const l=$('cline'),a=$('carea');l.style.transition='none';l.style.strokeDashoffset=1200;a.style.opacity=0;setTimeout(()=>{l.style.transition='';l.style.strokeDashoffset=0;a.style.opacity=1},400)}
+
+/* التنقل */
+const dots=$('dots');slides.forEach((_,i)=>{const d=document.createElement('i');d.onclick=()=>show(i);dots.appendChild(d)});
+function show(n){if(n<0||n>=slides.length||n===cur)return;const fwd=n>cur;
+slides.forEach(s=>{s.style.setProperty('--dx',fwd?'-90px':'90px');s.style.setProperty('--ry',fwd?'8deg':'-8deg')});
+slides[cur].classList.remove('active');cur=n;slides[cur].classList.add('active');
+if(cur===1)chart();setTimeout(()=>counters(slides[cur]),500);ui()}
+function ui(){const s=slides[cur],t=String(cur+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+$('idx').textContent=t;$('progress').style.width=((cur+1)/slides.length*100)+'%';
+[...dots.children].forEach((d,i)=>d.className=i===cur?'on':'');
+$('dtitle').textContent=s.dataset.title;$('dscript').textContent=s.dataset.spoken;
+if(remote){$('m-idx').textContent=t;$('m-title').textContent=s.dataset.title;$('m-script').textContent=s.dataset.spoken}}
+$('next').onclick=()=>show(cur+1);$('prev').onclick=()=>show(cur-1);
+
+/* المؤقت */
+let sec=300,tm=null;
+$('tbtn').onclick=()=>{if(tm){clearInterval(tm);tm=null;$('tbtn').textContent='▶'}else{$('tbtn').textContent='⏸';tm=setInterval(()=>{if(sec>0)sec--;else clearInterval(tm);$('timer').textContent=String(sec/60|0).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');if(sec<=30)$('timer').style.color='#fb7185'},1000)}};
+
+/* النوتات + ملء الشاشة + اختصارات */
+const dr=$('drawer'),qr=$('qr');
+const toggleN=()=>dr.classList.toggle('open');$('bnotes').onclick=toggleN;$('dclose').onclick=toggleN;
+function toggleFS(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}
+addEventListener('keydown',e=>{if(['ArrowLeft',' ','PageDown'].includes(e.key))show(cur+1);else if(['ArrowRight','PageUp'].includes(e.key))show(cur-1);else if(/^s$/i.test(e.key))toggleN();else if(/^f$/i.test(e.key))toggleFS()});
+let tx=0;addEventListener('touchstart',e=>tx=e.touches[0].clientX);addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>70&&!remote)show(cur+(d<0?1:-1))});
+
+/* ريموت الجوال عبر ntfy */
+const TOPIC='jordantour_win_stage_control_982';
+if(remote){$('app').classList.add('hidden');$('remote').classList.remove('hidden')}
+else{try{new EventSource('https://ntfy.sh/'+TOPIC+'/sse').onmessage=e=>{try{const m=JSON.parse(e.data).message;if(m==='next')show(cur+1);if(m==='prev')show(cur-1)}catch(_){}}}catch(_){}}
+window.remoteSend=c=>{fetch('https://ntfy.sh/'+TOPIC,{method:'POST',body:c}).catch(()=>{});
+if(c==='next'&&cur<slides.length-1)cur++;if(c==='prev'&&cur>0)cur--;ui();navigator.vibrate&&navigator.vibrate(35)};
+window.openPair=()=>{$('qrimg').src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data='+encodeURIComponent(location.origin+location.pathname+'?remote=1');qr.classList.remove('hidden')};
+
+ui();setTimeout(()=>counters(slides[0]),500);
+</script>
+</body>
+</html>
